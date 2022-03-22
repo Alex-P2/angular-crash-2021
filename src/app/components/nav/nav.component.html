@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button [matMenuTriggerFor]="mainMenu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <!-- MENUS -->
+    <mat-menu #mainMenu="matMenu">
+        <button mat-menu-item>Transaction Entry</button>
+
+        <button mat-menu-item [matMenuTriggerFor]="masterData">Master Data</button>
+        <mat-menu #masterData="matMenu">
+            <button mat-menu-item >Customers</button>
+            <button mat-menu-item >Commodities</button>
+            <button mat-menu-item >Grades</button>
+            <button mat-menu-item >Grade Tables</button>
+            <button mat-menu-item >Grading Factors</button>
+            <button mat-menu-item >Factors</button>
+            <button mat-menu-item >Bins</button>
+            <button mat-menu-item >Vehicles</button>
+            <button mat-menu-item >Settings</button>
+        </mat-menu>
+
+        <button mat-menu-item [matMenuTriggerFor]="reports">Reports</button>
+        <mat-menu #reports="matMenu">
+            <button mat-menu-item >Stock by Client</button>
+            <button mat-menu-item >Stock by Product</button>
+            <button mat-menu-item >Stock by Bin</button>
+            <button mat-menu-item >Stock by Transaction Type</button>
+            <button mat-menu-item >Tickets</button>
+        </mat-menu>
+    </mat-menu>
+    
+</mat-toolbar>
