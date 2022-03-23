@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material/material.module';
 import { FormsModule } from '@angular/forms';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -27,6 +28,7 @@ registerLocaleData(en);
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     MaterialModule,
     FormsModule,
     HttpClientModule,

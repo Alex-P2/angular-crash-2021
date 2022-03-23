@@ -3,15 +3,6 @@
     <button mat-icon-button (click)="opened=!opened">
         <mat-icon>menu</mat-icon>
     </button>
-
-    <!-- Light/Dark Mode -->
-    <div div id="color-mode-container">
-        <div id="color-mode-toggle">
-            <mat-icon>wb_sunny</mat-icon>
-            <mat-slide-toggle></mat-slide-toggle>
-            <mat-icon>brightness_2</mat-icon>
-        </div>
-    </div>
     
 </mat-toolbar>
 
@@ -21,31 +12,33 @@
         <!-- MENU -->
         <ul nz-menu nzMode="inline">
             
-            <li nz-menu-item>Transaction Entry</li>
-            
-            <li nz-submenu nzTitle="Master Data">
-              <ul>
-                <li nz-menu-item>Customers</li>
-                <li nz-menu-item>Commodities</li>
-                <li nz-menu-item>Grades</li>
-                <li nz-menu-item>Grade Tables</li>
-                <li nz-menu-item>Grading Factors</li>
-                <li nz-menu-item>Factors</li>
-                <li nz-menu-item>Bins</li>
-                <li nz-menu-item>Vehicles</li>
-                <li nz-menu-item>Settings</li>
-              </ul>
-            </li>
-            <li nz-submenu nzTitle="Reports">
-              <ul>
-                <li nz-menu-item>Stock by Client</li>
-                <li nz-menu-item>Stock by Product</li>
-                <li nz-menu-item>Stock by Bin</li>
-                <li nz-menu-item class="wrap-li">Stock by Transaction Type</li>
-                <li nz-menu-item>Tickets</li>
-
-              </ul>
-            </li>
-        </ul>
+          <li nz-menu-item><a routerLink="/transaction-entry">Transaction Entry</a></li>
+          
+          <li nz-submenu nzTitle="Master Data">
+            <ul>
+              <li nz-menu-item><a routerLink="/customers">Customers</a></li>
+              <li nz-menu-item><a routerLink="/commodities">Commodities</a></li>
+              <li nz-menu-item><a routerLink="/grades">Grades</a></li>
+              <li nz-menu-item><a routerLink="/grade-tables">Grade Tables</a></li>
+              <li nz-menu-item><a routerLink="/grading-factors">Grading Factors</a></li>
+              <li nz-menu-item><a routerLink="/factors">Factors</a></li>
+              <li nz-menu-item><a routerLink="/bins">Bins</a></li>
+              <li nz-menu-item><a routerLink="/vehicles">Vehicles</a></li>
+              <li nz-menu-item><a routerLink="/settings">Settings</a></li>
+            </ul>
+          </li>
+          <li nz-submenu nzTitle="Reports">
+            <ul>
+              <li nz-menu-item><a routerLink="/stock-by-client">Stock by Client</a></li>
+              <li nz-menu-item><a routerLink="/stock-by-product">Stock by Product</a></li>
+              <li nz-menu-item><a routerLink="/stock-by-bin">Stock by Bin</a></li>
+              <li nz-menu-item><a routerLink="/stock-by-transaction-type">Stock by Transaction Type</a></li>
+              <li nz-menu-item><a routerLink="/tickets">Tickets</a></li>
+            </ul>
+          </li>
+      </ul>
     </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
 </mat-sidenav-container>
