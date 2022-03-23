@@ -1,32 +1,51 @@
 <mat-toolbar color="primary">
-    <button mat-icon-button [matMenuTriggerFor]="mainMenu">
+    <!-- MENU TOGGLE -->
+    <button mat-icon-button (click)="opened=!opened">
         <mat-icon>menu</mat-icon>
     </button>
-    <!-- MENUS -->
-    <mat-menu #mainMenu="matMenu">
-        <button mat-menu-item>Transaction Entry</button>
 
-        <button mat-menu-item [matMenuTriggerFor]="masterData">Master Data</button>
-        <mat-menu #masterData="matMenu">
-            <button mat-menu-item >Customers</button>
-            <button mat-menu-item >Commodities</button>
-            <button mat-menu-item >Grades</button>
-            <button mat-menu-item >Grade Tables</button>
-            <button mat-menu-item >Grading Factors</button>
-            <button mat-menu-item >Factors</button>
-            <button mat-menu-item >Bins</button>
-            <button mat-menu-item >Vehicles</button>
-            <button mat-menu-item >Settings</button>
-        </mat-menu>
-
-        <button mat-menu-item [matMenuTriggerFor]="reports">Reports</button>
-        <mat-menu #reports="matMenu">
-            <button mat-menu-item >Stock by Client</button>
-            <button mat-menu-item >Stock by Product</button>
-            <button mat-menu-item >Stock by Bin</button>
-            <button mat-menu-item >Stock by Transaction Type</button>
-            <button mat-menu-item >Tickets</button>
-        </mat-menu>
-    </mat-menu>
+    <!-- Light/Dark Mode -->
+    <div div id="color-mode-container">
+        <div id="color-mode-toggle">
+            <mat-icon>wb_sunny</mat-icon>
+            <mat-slide-toggle></mat-slide-toggle>
+            <mat-icon>brightness_2</mat-icon>
+        </div>
+    </div>
     
 </mat-toolbar>
+
+<!-- Navigation Sidebar -->
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [(opened)]="opened">
+        <!-- MENU -->
+        <ul nz-menu nzMode="inline">
+            
+            <li nz-menu-item>Transaction Entry</li>
+            
+            <li nz-submenu nzTitle="Master Data">
+              <ul>
+                <li nz-menu-item>Customers</li>
+                <li nz-menu-item>Commodities</li>
+                <li nz-menu-item>Grades</li>
+                <li nz-menu-item>Grade Tables</li>
+                <li nz-menu-item>Grading Factors</li>
+                <li nz-menu-item>Factors</li>
+                <li nz-menu-item>Bins</li>
+                <li nz-menu-item>Vehicles</li>
+                <li nz-menu-item>Settings</li>
+              </ul>
+            </li>
+            <li nz-submenu nzTitle="Reports">
+              <ul>
+                <li nz-menu-item>Stock by Client</li>
+                <li nz-menu-item>Stock by Product</li>
+                <li nz-menu-item>Stock by Bin</li>
+                <li nz-menu-item class="wrap-li">Stock by Transaction Type</li>
+                <li nz-menu-item>Tickets</li>
+
+              </ul>
+            </li>
+        </ul>
+    </mat-sidenav>
+</mat-sidenav-container>

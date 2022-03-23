@@ -10,6 +10,7 @@ export class NavComponent implements OnInit {
   // toggle for sidenav
   opened = true;
 
+
   constructor() { }
 
   ngOnInit(): void {

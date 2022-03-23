@@ -8,6 +8,14 @@ import { FormsModule } from '@angular/forms';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { NavComponent } from './components/nav/nav.component';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { HttpClientModule } from '@angular/common/http';
+import { NgZorroModule } from './ng-zorro/ng-zorro.module';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -20,9 +28,11 @@ import { NavComponent } from './components/nav/nav.component';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    NgZorroModule
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
