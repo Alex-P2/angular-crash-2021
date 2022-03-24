@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // VIEWS
-import { TransactionEntryComponent } from './components/views/master data/transaction-entry/transaction-entry.component';
+import { TransactionEntryComponent } from './components/views/transaction-entry/transaction-entry.component';
 // MasterData
 import { CustomersComponent } from './components/views/master data/customers/customers.component';
 import { CommoditiesComponent } from './components/views/master data/commodities/commodities.component';

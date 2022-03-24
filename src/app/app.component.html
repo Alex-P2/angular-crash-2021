@@ -1,1 +1,45 @@
-<app-nav></app-nav>
+<mat-toolbar color="primary">
+    <!-- MENU TOGGLE -->
+    <button mat-icon-button (click)="opened=!opened">
+        <mat-icon>menu</mat-icon>
+    </button>
+    
+</mat-toolbar>
+
+<!-- Navigation Sidebar -->
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [(opened)]="opened">
+        <!-- MENU -->
+        <ul nz-menu nzMode="inline">
+            
+          <li nz-menu-item><a routerLink="/transaction-entry">Transaction Entry</a></li>
+          
+          <li nz-submenu nzTitle="Master Data">
+            <ul>
+              <li nz-menu-item><a routerLink="/customers">Customers</a></li>
+              <li nz-menu-item><a routerLink="/commodities">Commodities</a></li>
+              <li nz-menu-item><a routerLink="/grades">Grades</a></li>
+              <li nz-menu-item><a routerLink="/grade-tables">Grade Tables</a></li>
+              <li nz-menu-item><a routerLink="/grading-factors">Grading Factors</a></li>
+              <li nz-menu-item><a routerLink="/factors">Factors</a></li>
+              <li nz-menu-item><a routerLink="/bins">Bins</a></li>
+              <li nz-menu-item><a routerLink="/vehicles">Vehicles</a></li>
+              <li nz-menu-item><a routerLink="/settings">Settings</a></li>
+            </ul>
+          </li>
+          <li nz-submenu nzTitle="Reports">
+            <ul>
+              <li nz-menu-item><a routerLink="/stock-by-client">Stock by Client</a></li>
+              <li nz-menu-item><a routerLink="/stock-by-product">Stock by Product</a></li>
+              <li nz-menu-item><a routerLink="/stock-by-bin">Stock by Bin</a></li>
+              <li nz-menu-item><a routerLink="/stock-by-transaction-type">Stock by Transaction Type</a></li>
+              <li nz-menu-item><a routerLink="/tickets">Tickets</a></li>
+            </ul>
+          </li>
+      </ul>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <!-- Display Views -->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
