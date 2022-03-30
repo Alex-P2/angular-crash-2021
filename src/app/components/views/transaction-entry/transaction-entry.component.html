@@ -1,1 +1,72 @@
-<p>transaction-ntry works!</p>
+<div class="custom-container">
+    <div>
+        <!-- Latest Tickets Table -->
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z2">
+            <ng-container matColumnDef="number">
+                <th mat-header-cell *matHeaderCellDef> Number </th>
+                <td mat-cell *matCellDef="let ticket"> {{ticket.number}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef> Type </th>
+                <td mat-cell *matCellDef="let ticket"> {{ticket.type}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="customer">
+                <th mat-header-cell *matHeaderCellDef> Customer </th>
+                <td mat-cell *matCellDef="let ticket"> {{ticket.customer}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef> Date </th>
+                <td mat-cell *matCellDef="let ticket"> {{ticket.date}} </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
+    <div>
+        <!-- Input Form -->
+        <label for="commodity">commodity:</label>
+        <input type="text" name="commodity">
+
+        <label for="customer">customer:</label>
+        <input type="text" name="customer">
+
+        <label for="vehicle id">vehicle id:</label>
+        <input type="text" name="vehicle id">
+
+        <label for="driver id">driver id:</label>
+        <input type="text" name="driver id">
+
+        <label for="grade">grade:</label>
+        <input type="text" name="grade">
+
+        <label for="ticker number">ticker number:</label>
+        <input type="text" name="ticker number">
+
+        <label for="transaction type">transaction type:</label>
+        <input type="radio" name="transaction type">
+
+        <label for="first weight">first weight:</label>
+        <input type="text" name="first weight">
+
+        <label for="second weight">second weight:</label>
+        <input type="text" name="second weight">
+
+        <label for="gross weight">gross weight:</label>
+        <input type="text" name="gross weight">
+        
+        <label for="net weight">net weight:</label>
+        <input type="text" name="net weight">
+
+
+    </div>
+
+    <div>
+        <!-- Buttons -->
+    </div>
+
+</div>

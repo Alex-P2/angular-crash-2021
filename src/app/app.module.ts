@@ -2,34 +2,39 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { TransactionEntryComponent } from './components/views/transaction-entry/transaction-entry.component';
+import { CommoditiesComponent } from './components/views/master data/commodities/commodities.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material/material.module';
-import { FormsModule } from '@angular/forms';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { HttpClientModule } from '@angular/common/http';
 import { NgZorroModule } from './ng-zorro/ng-zorro.module';
-import { TicketTableComponent } from './components/ticket-table/ticket-table.component';
+import {FormsModule} from '@angular/forms';
+
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    TicketTableComponent
+    TransactionEntryComponent,
+    CommoditiesComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
-    FormsModule,
     HttpClientModule,
-    NgZorroModule
+    NgZorroModule,
+    FormsModule
   ],
+  entryComponents: [],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })

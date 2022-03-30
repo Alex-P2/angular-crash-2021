@@ -1,1 +1,50 @@
-<p>commodities works!</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z2">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Commodity Code Column -->
+    <ng-container matColumnDef="commodityId">
+      <th mat-header-cell *matHeaderCellDef> Commodity Code </th>
+      <td mat-cell *matCellDef="let commodity"> {{commodity.commodityId}} </td>
+    </ng-container>
+  
+    <!-- description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let commodity"> {{commodity.description}} </td>
+    </ng-container>
+  
+    <!-- gradeOverride Column -->
+    <ng-container matColumnDef="gradeOverride">
+      <th mat-header-cell *matHeaderCellDef> Grade Override </th>
+      <td mat-cell *matCellDef="let commodity"> <mat-checkbox></mat-checkbox> </td>
+    </ng-container>
+  
+    <!-- weighed Column -->
+    <ng-container matColumnDef="weighed">
+      <th mat-header-cell *matHeaderCellDef> Weighed </th>
+      <td mat-cell *matCellDef="let commodity"> <mat-checkbox [checked]="true"></mat-checkbox> </td>
+    </ng-container>
+
+    <!-- unitOfMeasure Column -->
+    <ng-container matColumnDef="unitOfMeasure">
+        <th mat-header-cell *matHeaderCellDef> Unit of Measure </th>
+        <td mat-cell *matCellDef="let commodity"> {{commodity.unitOfMeasure}} </td>
+      </ng-container>
+
+    <!-- kgPerUnit Column -->
+    <ng-container matColumnDef="kgPerUnit">
+        <th mat-header-cell *matHeaderCellDef> Kg per Unit </th>
+        <td mat-cell *matCellDef="let commodity"> {{commodity.kgPerUnit}} </td>
+      </ng-container>
+
+      <!-- kgPerUnit Column -->
+    <ng-container matColumnDef="other">
+        <th mat-header-cell *matHeaderCellDef> other </th>
+        <td mat-cell *matCellDef="let commodity"> {{commodity.other}} </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

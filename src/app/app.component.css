@@ -8,24 +8,12 @@ mat-sidenav, mat-sidenav-content {
 }
 
 mat-sidenav {
-    background-color: #ffffff;
+    background-color: white;
     width: 270px;
     color: black;
     padding: 0px;
 }
 
-#color-mode-container {
-    width: 100%;
-}
-
-#color-mode-toggle {
-    display: inline-flex;
-    float: right;
-}
-#color-mode-toggle mat-slide-toggle {
-    margin-left: 10px;
-    margin-right: 10px;
-}
 
 /* Menu Item Style */
 
