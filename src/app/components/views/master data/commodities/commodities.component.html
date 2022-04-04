@@ -1,50 +1,69 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z2">
+<mat-form-field appearance="standard">
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Eg. Commodity Name" #input>
+</mat-form-field>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z2">
     <!-- Commodity Code Column -->
-    <ng-container matColumnDef="commodityId">
-      <th mat-header-cell *matHeaderCellDef> Commodity Code </th>
-      <td mat-cell *matCellDef="let commodity"> {{commodity.commodityId}} </td>
+    <ng-container matColumnDef="productcode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Commodity Code </th>
+      <td mat-cell *matCellDef="let row"> {{ row.options_productcode }}</td>
     </ng-container>
   
     <!-- description Column -->
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef> Description </th>
-      <td mat-cell *matCellDef="let commodity"> {{commodity.description}} </td>
+    <ng-container matColumnDef="label">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.label}} </td>
     </ng-container>
   
     <!-- gradeOverride Column -->
-    <ng-container matColumnDef="gradeOverride">
-      <th mat-header-cell *matHeaderCellDef> Grade Override </th>
-      <td mat-cell *matCellDef="let commodity"> <mat-checkbox></mat-checkbox> </td>
+    <ng-container matColumnDef="gradeoverride">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Grade Override </th>
+      <td mat-cell *matCellDef="let row"> {{ row.gradeoverride }} </td>
     </ng-container>
   
     <!-- weighed Column -->
     <ng-container matColumnDef="weighed">
-      <th mat-header-cell *matHeaderCellDef> Weighed </th>
-      <td mat-cell *matCellDef="let commodity"> <mat-checkbox [checked]="true"></mat-checkbox> </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Weighed </th>
+      <td mat-cell *matCellDef="let row"> {{ row.weighed }} </td>
     </ng-container>
 
     <!-- unitOfMeasure Column -->
-    <ng-container matColumnDef="unitOfMeasure">
-        <th mat-header-cell *matHeaderCellDef> Unit of Measure </th>
-        <td mat-cell *matCellDef="let commodity"> {{commodity.unitOfMeasure}} </td>
-      </ng-container>
+    <ng-container matColumnDef="unitofmeasure">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Unit of Measure </th>
+        <td mat-cell *matCellDef="let row"> {{ row.unitofmeasure }} </td>
+    </ng-container>
 
     <!-- kgPerUnit Column -->
-    <ng-container matColumnDef="kgPerUnit">
-        <th mat-header-cell *matHeaderCellDef> Kg per Unit </th>
-        <td mat-cell *matCellDef="let commodity"> {{commodity.kgPerUnit}} </td>
-      </ng-container>
+    <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Kg per Unit </th>
+        <td mat-cell *matCellDef="let row"> {{ row.weight }} </td>
+    </ng-container>
 
-      <!-- kgPerUnit Column -->
-    <ng-container matColumnDef="other">
-        <th mat-header-cell *matHeaderCellDef> other </th>
-        <td mat-cell *matCellDef="let commodity"> {{commodity.other}} </td>
-      </ng-container>
-  
+    <!-- isdeleted Column -->
+    <ng-container matColumnDef="isdeleted">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> isdeleted </th>
+      <td mat-cell *matCellDef="let row">{{ row.isdeleted }}</td>
+    </ng-container>
+
+    <!-- ref. Column -->
+    <ng-container matColumnDef="ref">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ref. </th>
+      <td mat-cell *matCellDef="let row"> {{row.ref}} </td>
+    </ng-container>
+
+    <!-- timestamp Column -->
+    <ng-container matColumnDef="date_modification">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Modified </th>
+      <td mat-cell *matCellDef="let row"> {{ row.date_modification }} </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="mat-row" *matNoDataRow >
+      <td class="mat-cell" colspan="6">No data matching the filter "{{input.value}}"</td>
+    </tr>
   </table>
+  <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+

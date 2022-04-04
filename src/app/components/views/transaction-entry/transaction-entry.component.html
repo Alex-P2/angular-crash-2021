@@ -1,24 +1,24 @@
 <div class="custom-container">
     <div>
         <!-- Latest Tickets Table -->
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z2">
+        <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z2">
             <ng-container matColumnDef="number">
-                <th mat-header-cell *matHeaderCellDef> Number </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Number </th>
                 <td mat-cell *matCellDef="let ticket"> {{ticket.number}} </td>
             </ng-container>
 
             <ng-container matColumnDef="type">
-                <th mat-header-cell *matHeaderCellDef> Type </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
                 <td mat-cell *matCellDef="let ticket"> {{ticket.type}} </td>
             </ng-container>
 
             <ng-container matColumnDef="customer">
-                <th mat-header-cell *matHeaderCellDef> Customer </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer </th>
                 <td mat-cell *matCellDef="let ticket"> {{ticket.customer}} </td>
             </ng-container>
 
             <ng-container matColumnDef="date">
-                <th mat-header-cell *matHeaderCellDef> Date </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
                 <td mat-cell *matCellDef="let ticket"> {{ticket.date}} </td>
             </ng-container>
             

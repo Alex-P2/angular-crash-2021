@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+
+
 export interface ticket {
   number: number;
   type: string;
@@ -28,8 +32,13 @@ const TICKET_DATA: ticket[] = [
 
 export class TransactionEntryComponent implements OnInit {
   displayedColumns: string[] = ['number', 'type', 'customer', 'date'];
-  dataSource = TICKET_DATA;
+  dataSource = new MatTableDataSource(TICKET_DATA);
+
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+
+
   ngOnInit(): void {
+    this.dataSource.sort = this.sort;
   }
 
 }
