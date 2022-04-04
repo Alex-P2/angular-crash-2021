@@ -1,7 +1,8 @@
 import { HttpHeaders } from '@angular/common/http';
+import { ApiServiceService } from '../../../../services/api-service.service';
+import { Commodity } from './CommodityClass';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { ApiServiceService, Commodity } from '../../../../services/api-service.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable } from '@angular/material/table';
