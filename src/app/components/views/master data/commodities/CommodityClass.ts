@@ -1,4 +1,5 @@
 export class Commodity {
+    public id: string;
     public options_productcode: string;
     public label: string;
     public gradeoverride: string;
@@ -11,6 +12,7 @@ export class Commodity {
     public array_options: Array<any>;
   
     constructor(
+      id: string,
       options_productcode: string,
       label: string,
       gradeoverride: string,
@@ -22,6 +24,7 @@ export class Commodity {
       date_modification: any,
       array_options: Array<any>
     ) {
+      this.id = id;
       this.options_productcode = options_productcode;
       this.label = label;
       this.gradeoverride = gradeoverride;

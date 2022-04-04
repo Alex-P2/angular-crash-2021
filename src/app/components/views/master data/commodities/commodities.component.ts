@@ -16,13 +16,14 @@ import { MatTable } from '@angular/material/table';
 export class CommoditiesComponent implements OnInit, AfterViewInit {
   /*displayedColumns: string[] = ['commodityCode', 'name', 'gradeOverride', 'weighed', 'unitOfMeasure', 'kgPerUnit'];*/
 
-  displayedColumns: string[] = ['productcode', 'label', 'unitofmeasure', 'weight', 'ref', 'date_modification'];
+  displayedColumns: string[] = ['productcode', 'label', 'unitofmeasure', 'weight', 'ref', 'date_modification'/*, 'edit'*/];
   resultsLength = 0;
   isLoadingResults = true;
   isRateLimitReached = false;
 
   extention = 'products';
   parameters = '?';
+  http_body: JSON;
   DOLAPIKEY = '600EBbzpoZIbscV53dr574RNgEI4UHx4';
   http_headers: HttpHeaders = new HttpHeaders({
     'DOLAPIKEY': this.DOLAPIKEY
@@ -45,7 +46,7 @@ export class CommoditiesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatTable) table: MatTable<Commodity>;
 
   ngOnInit() {
-    this.comService.getResponse(this.extention, this.parameters, this.http_headers)
+    this.comService.dolibarr_get(this.extention, this.parameters, this.http_headers)
     .subscribe(response => {
       this.commodities = response.map(item => {
         this.options_array = item.array_options;
@@ -56,6 +57,7 @@ export class CommoditiesComponent implements OnInit, AfterViewInit {
         this.isdeleted = this.options_array['options_isdeleted'];
 
         return new Commodity(
+          item.id,
           this.options_productcode,
           item.label,
           this.gradeoverride,
@@ -71,7 +73,6 @@ export class CommoditiesComponent implements OnInit, AfterViewInit {
       this.dataSource = new MatTableDataSource<Commodity>(this.commodities);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
-      console.log(this.dataSource);
     });
   }
 
@@ -83,5 +84,17 @@ export class CommoditiesComponent implements OnInit, AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
+  updateProduct(id: string, cell_content: any) {
+    console.log('update activated');
+    console.warn('product id: ' + id);
+    this.parameters = '/' + id;
+    this.http_body = JSON.parse(`{"label":"${cell_content}"}`);
+    this.comService.dolibarr_post(this.extention, this.parameters, this.http_body, this.http_headers)
+    .subscribe(response => {
+      console.log(response);
+    });
   }
 }
